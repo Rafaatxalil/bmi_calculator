@@ -34,6 +34,7 @@ class Age extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
+                  key: const ValueKey('age_decrement'),
                   onPressed: ref.read(bmiProvider).subAge,
                   icon: const Icon(
                     Icons.remove,
@@ -45,6 +46,7 @@ class Age extends ConsumerWidget {
                   ),
                 ),
                 IconButton(
+                  key: const ValueKey('age'),
                   onPressed: ref.read(bmiProvider).addAge,
                   icon: const Icon(
                     Icons.add,

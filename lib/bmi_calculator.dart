@@ -5,9 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BmiCalculator extends ChangeNotifier {
   double bmi = 0;
-  int height = 0;
-  int weight = 0;
-  int age = 0;
+  int height = 150;
+  int weight = 55;
+  int age = 30;
   int genderIndex = 0;
 
   void setHeight(int heightcm) {
