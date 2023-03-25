@@ -15,8 +15,6 @@ class BmiCalculator extends ChangeNotifier {
     notifyListeners();
   }
 
-  get getHeight => height;
-
   void addAge() {
     age++;
     notifyListeners();
@@ -26,8 +24,6 @@ class BmiCalculator extends ChangeNotifier {
     age--;
     notifyListeners();
   }
-
-  get getAge => age;
 
   void addWeight() {
     weight++;
@@ -44,20 +40,23 @@ class BmiCalculator extends ChangeNotifier {
     notifyListeners();
   }
 
+  get getBMI => bmi;
+  get getHeight => height;
+  get getAge => age;
   get getWeight => weight;
   get getGender => genderIndex;
 
-  double calculateBMI() {
-    double bmi =
+  void calculateBMI() {
+    double bmiCalculation =
         (weight / pow(height / 100, 2)) + (genderIndex * 1.5) - (age * 0.04);
-    return bmi;
+    bmi = bmiCalculation;
   }
 
   String interpretateBMI() {
-    bmi = calculateBMI();
+    calculateBMI();
     if (bmi >= 25) {
       return 'You have a higher body weight than normal, Try to exercise';
-    } else if (bmi >= 18) {
+    } else if (bmi > 20) {
       return 'You have a normal body weight, good job';
     } else {
       return 'You have a lower body weight than normal, Try eat more';
