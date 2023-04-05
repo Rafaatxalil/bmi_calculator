@@ -1,12 +1,14 @@
-import 'package:bmi_calculator/bmi_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Age extends ConsumerWidget {
-  const Age({super.key});
+import '../../../state/bmi/providers/bmi_provider.dart';
+
+class AgeWidget extends ConsumerWidget {
+  const AgeWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final bmi = ref.read(bmiProvider.notifier);
     return Expanded(
       child: Container(
         padding: const EdgeInsets.all(
@@ -18,43 +20,43 @@ class Age extends ConsumerWidget {
         ),
         child: Column(
           children: [
-            const Text(
+            Text(
               'AGE',
-              style: TextStyle(
-                fontSize: 15,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(
+              height: 5,
             ),
             Text(
-              ref.watch(bmiProvider).getAge.toString(),
-              style: const TextStyle(
-                fontSize: 35,
-              ),
+              ref.watch(bmiProvider).age.toString(),
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
                   key: const ValueKey('age_decrement'),
-                  onPressed: ref.read(bmiProvider).subAge,
-                  icon: const Icon(
-                    Icons.remove,
-                  ),
+                  onPressed: bmi.setAgeDown,
                   style: ButtonStyle(
-                    shape: const MaterialStatePropertyAll(CircleBorder()),
                     backgroundColor:
                         MaterialStatePropertyAll(Colors.indigo[400]),
+                  ),
+                  icon: const Icon(
+                    Icons.remove,
                   ),
                 ),
                 IconButton(
                   key: const ValueKey('age'),
-                  onPressed: ref.read(bmiProvider).addAge,
-                  icon: const Icon(
-                    Icons.add,
-                  ),
+                  onPressed: bmi.setAgeUp,
                   style: ButtonStyle(
-                    shape: const MaterialStatePropertyAll(CircleBorder()),
                     backgroundColor:
                         MaterialStatePropertyAll(Colors.indigo[400]),
+                  ),
+                  icon: const Icon(
+                    Icons.add,
                   ),
                 ),
               ],
