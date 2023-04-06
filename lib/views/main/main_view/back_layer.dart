@@ -65,12 +65,14 @@ class BackLayer extends ConsumerWidget {
               ],
               selected: {ref.watch(measureProvider)},
               onSelectionChanged: (newValue) {
+                final height = ref.read(bmiProvider).height;
+                final weight = ref.read(bmiProvider).weight;
                 if (newValue.first == Measurement.imperial) {
-                  ref.read(bmiProvider.notifier).setHeight(5.4);
-                  ref.read(bmiProvider.notifier).setWeight(154.3);
+                  ref.read(bmiProvider.notifier).setHeight(height * 0.0328084);
+                  ref.read(bmiProvider.notifier).setWeight(weight * 2.20462);
                 } else {
-                  ref.read(bmiProvider.notifier).setHeight(165);
-                  ref.read(bmiProvider.notifier).setWeight(70);
+                  ref.read(bmiProvider.notifier).setHeight(height * 30.48);
+                  ref.read(bmiProvider.notifier).setWeight(weight * 0.453592);
                 }
                 ref.read(measureProvider.notifier).state = newValue.first;
               },

@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../state/bmi/providers/bmi_provider.dart';
 
-class AgeWidget extends ConsumerWidget {
+class AgeWidget extends StatefulHookConsumerWidget {
   const AgeWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _AgeWidgetState();
+}
+
+class _AgeWidgetState extends ConsumerState<AgeWidget> {
+  @override
+  Widget build(BuildContext context) {
+    final ageController = useTextEditingController();
+    useEffect(() {
+      ageController.text = ref.watch(bmiProvider).age.toString();
+      return null;
+    }, [ref.watch(bmiProvider).age]);
     final bmi = ref.read(bmiProvider.notifier);
     return Expanded(
       child: Container(
@@ -27,10 +38,25 @@ class AgeWidget extends ConsumerWidget {
             const SizedBox(
               height: 5,
             ),
-            Text(
-              ref.watch(bmiProvider).age.toString(),
+
+            TextField(
+              key: const ValueKey('age_input'),
+              controller: ageController,
+              onSubmitted: (value) {
+                bmi.setAge(int.parse(value));
+              },
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleLarge,
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.zero,
+                border: InputBorder.none,
+              ),
             ),
+            // Text(
+            //   ref.watch(bmiProvider).age.toString(),
+            //   style: Theme.of(context).textTheme.titleLarge,
+            // ),
             const SizedBox(
               height: 5,
             ),

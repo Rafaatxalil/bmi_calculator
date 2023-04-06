@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/enums/measurement.dart';
 import 'package:bmi_calculator/state/bmi/providers/result_of_bmi_provider.dart';
 import 'package:bmi_calculator/state/measurement/providers/mesurement.dart';
+import 'package:bmi_calculator/state/theme/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -44,9 +45,20 @@ class CalculateButtonWidget extends ConsumerWidget {
               padding: const EdgeInsets.all(10),
               child: AlertDialog(
                 title: Text(
-                    'Your BMI is: ${ref.watch(bmiProvider).bmi.toStringAsFixed(2)}'),
+                  'Your BMI is: ${ref.watch(bmiProvider).bmi.toStringAsFixed(2)}',
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: ref.watch(themeProvider) == ThemeMode.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                ),
                 content: Text(
                   ref.watch(resultOfBmiProvider),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: ref.watch(themeProvider) == ThemeMode.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                 ),
               ),
             ),

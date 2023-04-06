@@ -12,48 +12,50 @@ class FrontLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 20,
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: const [
-              GenderWidget(
-                gender: 'Male',
-                icon: Icons.male,
-                genderType: GenderType.male,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              GenderWidget(
-                gender: 'Female',
-                icon: Icons.female,
-                genderType: GenderType.female,
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const HeightWidget(),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: const [
-              AgeWidget(),
-              SizedBox(
-                width: 10,
-              ),
-              WeightWidget(),
-            ],
-          ),
-          const CalculateButtonWidget(),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 20,
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: const [
+                GenderWidget(
+                  gender: 'Male',
+                  icon: Icons.male,
+                  genderType: GenderType.male,
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                GenderWidget(
+                  gender: 'Female',
+                  icon: Icons.female,
+                  genderType: GenderType.female,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const HeightWidget(),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: const [
+                AgeWidget(),
+                SizedBox(
+                  width: 10,
+                ),
+                WeightWidget(),
+              ],
+            ),
+            const CalculateButtonWidget(),
+          ],
+        ),
       ),
     );
   }

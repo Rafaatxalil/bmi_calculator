@@ -26,6 +26,11 @@ class Theme {
     ),
     //
     textTheme: const TextTheme(
+      titleSmall: TextStyle(
+        color: Colors.white,
+        fontSize: 22,
+        fontWeight: FontWeight.w500,
+      ),
       titleMedium: TextStyle(
         color: Colors.white,
         fontSize: 30,
@@ -71,6 +76,11 @@ class Theme {
     ),
     //
     textTheme: const TextTheme(
+      titleSmall: TextStyle(
+        color: Colors.white,
+        fontSize: 22,
+        fontWeight: FontWeight.w500,
+      ),
       titleMedium: TextStyle(
         color: Colors.white,
         fontSize: 30,
