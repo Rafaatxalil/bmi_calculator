@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bmi_calculator/enums/gender_type.dart';
+import 'package:bmi_calculator/enums/measurement.dart';
 import 'package:bmi_calculator/state/bmi/models/bmi_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -46,6 +47,39 @@ class BmiNotifier extends StateNotifier<BmiModel> {
 
   void setWeightDown() {
     state = state.copyWith(weight: state.weight - 1);
+  }
+
+  void changeMeasurement(Measurement measurement) {
+    switch (Measurement.values[measurement.index]) {
+      case Measurement.metric:
+        double newHeight = state.height * 30.48;
+        if (newHeight > 200) {
+          newHeight = 200;
+        } else if (newHeight < 50) {
+          newHeight = 50;
+        } else {
+          newHeight = newHeight;
+        }
+        state = state.copyWith(
+          height: newHeight,
+          weight: state.weight * 0.453592,
+        );
+        break;
+      case Measurement.imperial:
+        double newHeight = state.height * 0.0328084;
+        if (newHeight > 6.5) {
+          newHeight = 6.5;
+        } else if (newHeight < 1.6) {
+          newHeight = 1.6;
+        } else {
+          newHeight = newHeight;
+        }
+        state = state.copyWith(
+          height: newHeight,
+          weight: state.weight * 2.20462,
+        );
+        break;
+    }
   }
 
   void calculateMetricBmi() {

@@ -69,25 +69,6 @@ class _WeightWidgetState extends ConsumerState<WeightWidget> {
                 ),
               ],
             ),
-            // Stack(
-            //   clipBehavior: Clip.none,
-            //   children: [
-            //     Text(
-            //       ref.watch(bmiProvider).weight.toString(),
-            //       style: Theme.of(context).textTheme.titleLarge,
-            //     ),
-            //     Positioned(
-            //       bottom: 10,
-            //       right: -23,
-            //       child: Text(
-            //         ref.watch(measureProvider) == Measurement.metric
-            //             ? 'kg'
-            //             : 'lb',
-            //         style: Theme.of(context).textTheme.bodySmall,
-            //       ),
-            //     ),
-            //   ],
-            // ),
             const SizedBox(
               height: 5,
             ),

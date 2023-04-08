@@ -17,6 +17,7 @@ class CalculateButtonWidget extends ConsumerWidget {
         top: 30,
       ),
       child: FilledButton.tonal(
+        key: const ValueKey('calculate_button'),
         style: ButtonStyle(
           padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(

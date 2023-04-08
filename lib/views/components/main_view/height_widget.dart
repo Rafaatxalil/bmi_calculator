@@ -53,6 +53,7 @@ class HeightWidget extends ConsumerWidget {
           ),
           Consumer(
             builder: (context, ref, child) => Slider(
+              key: const ValueKey('height_slider'),
               min: measure == Measurement.metric ? 50 : 1.6,
               max: measure == Measurement.metric ? 200 : 6.5,
               value: bmi.height,

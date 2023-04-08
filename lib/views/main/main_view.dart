@@ -20,6 +20,7 @@ class MainView extends ConsumerWidget {
           ),
         ),
         leading: BackdropToggleButton(
+          key: const ValueKey('backdrop_button'),
           icon: AnimatedIcons.arrow_menu,
           color: ref.watch(themeProvider) == ThemeMode.light
               ? Colors.black

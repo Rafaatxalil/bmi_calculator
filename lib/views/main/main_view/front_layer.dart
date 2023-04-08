@@ -23,6 +23,7 @@ class FrontLayer extends StatelessWidget {
             Row(
               children: const [
                 GenderWidget(
+                  key: ValueKey('male'),
                   gender: 'Male',
                   icon: Icons.male,
                   genderType: GenderType.male,
@@ -31,6 +32,7 @@ class FrontLayer extends StatelessWidget {
                   width: 15,
                 ),
                 GenderWidget(
+                  key: ValueKey('female'),
                   gender: 'Female',
                   icon: Icons.female,
                   genderType: GenderType.female,

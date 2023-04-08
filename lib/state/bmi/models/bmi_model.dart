@@ -32,4 +32,25 @@ class BmiModel {
       gernderType: gernderType ?? this.gernderType,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is BmiModel &&
+        other.bmi == bmi &&
+        other.age == age &&
+        other.height == height &&
+        other.weight == weight &&
+        other.gernderType == gernderType;
+  }
+
+  @override
+  int get hashCode => Object.hash(
+        bmi,
+        age,
+        height,
+        weight,
+        gernderType,
+      );
 }

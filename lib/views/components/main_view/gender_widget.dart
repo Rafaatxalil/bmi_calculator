@@ -9,11 +9,11 @@ class GenderWidget extends ConsumerWidget {
   final IconData icon;
   final GenderType genderType;
   const GenderWidget({
-    super.key,
+    required Key key,
     required this.gender,
     required this.icon,
     required this.genderType,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

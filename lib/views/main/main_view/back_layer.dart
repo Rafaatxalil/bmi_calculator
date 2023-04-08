@@ -16,6 +16,7 @@ class BackLayer extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SwitchListTile(
+            key: const ValueKey('them_switch'),
             value: ref.watch(themeProvider) == ThemeMode.dark,
             onChanged: (value) {
               ref.read(themeProvider.notifier).themeMode =
@@ -65,15 +66,10 @@ class BackLayer extends ConsumerWidget {
               ],
               selected: {ref.watch(measureProvider)},
               onSelectionChanged: (newValue) {
-                final height = ref.read(bmiProvider).height;
-                final weight = ref.read(bmiProvider).weight;
-                if (newValue.first == Measurement.imperial) {
-                  ref.read(bmiProvider.notifier).setHeight(height * 0.0328084);
-                  ref.read(bmiProvider.notifier).setWeight(weight * 2.20462);
-                } else {
-                  ref.read(bmiProvider.notifier).setHeight(height * 30.48);
-                  ref.read(bmiProvider.notifier).setWeight(weight * 0.453592);
-                }
+                ref
+                    .read(bmiProvider.notifier)
+                    .changeMeasurement(newValue.first);
+
                 ref.read(measureProvider.notifier).state = newValue.first;
               },
             ),

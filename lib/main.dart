@@ -12,9 +12,6 @@ void main() {
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
-  final String title = 'T';
-  final String message = 'M';
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(themeProvider);

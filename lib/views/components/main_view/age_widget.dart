@@ -20,6 +20,7 @@ class _AgeWidgetState extends ConsumerState<AgeWidget> {
       return null;
     }, [ref.watch(bmiProvider).age]);
     final bmi = ref.read(bmiProvider.notifier);
+
     return Expanded(
       child: Container(
         padding: const EdgeInsets.all(
@@ -38,7 +39,6 @@ class _AgeWidgetState extends ConsumerState<AgeWidget> {
             const SizedBox(
               height: 5,
             ),
-
             TextField(
               key: const ValueKey('age_input'),
               controller: ageController,
@@ -53,10 +53,6 @@ class _AgeWidgetState extends ConsumerState<AgeWidget> {
                 border: InputBorder.none,
               ),
             ),
-            // Text(
-            //   ref.watch(bmiProvider).age.toString(),
-            //   style: Theme.of(context).textTheme.titleLarge,
-            // ),
             const SizedBox(
               height: 5,
             ),
@@ -75,7 +71,7 @@ class _AgeWidgetState extends ConsumerState<AgeWidget> {
                   ),
                 ),
                 IconButton(
-                  key: const ValueKey('age'),
+                  key: const ValueKey('age_increment'),
                   onPressed: bmi.setAgeUp,
                   style: ButtonStyle(
                     backgroundColor:

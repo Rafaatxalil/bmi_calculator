@@ -2,7 +2,6 @@ import 'package:flutter/material.dart'
     show
         ButtonStyle,
         CircleBorder,
-        Color,
         ColorScheme,
         Colors,
         FontWeight,
