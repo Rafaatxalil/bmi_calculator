@@ -16,7 +16,7 @@ class BackLayer extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SwitchListTile(
-            key: const ValueKey('them_switch'),
+            key: const ValueKey('theme_switch'),
             value: ref.watch(themeProvider) == ThemeMode.dark,
             onChanged: (value) {
               ref.read(themeProvider.notifier).themeMode =
@@ -33,6 +33,7 @@ class BackLayer extends ConsumerWidget {
               style: Theme.of(context).textTheme.displayMedium,
             ),
             trailing: SegmentedButton(
+              key: const ValueKey('measurement_button'),
               style: const ButtonStyle(
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
